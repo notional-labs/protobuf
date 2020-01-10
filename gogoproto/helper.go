@@ -36,7 +36,12 @@ func IsEmbed(field *google_protobuf.FieldDescriptorProto) bool {
 }
 
 func IsNullable(field *google_protobuf.FieldDescriptorProto) bool {
-	return proto.GetBoolExtension(field.Options, E_Nullable, true)
+	return proto.GetBoolExtension(field.Options, E_Nullable, true) &&
+		!IsNoPointer(field)
+}
+
+func IsNoPointer(field *google_protobuf.FieldDescriptorProto) bool {
+	return proto.GetBoolExtension(field.Options, E_Nopointer, false)
 }
 
 func IsStdTime(field *google_protobuf.FieldDescriptorProto) bool {

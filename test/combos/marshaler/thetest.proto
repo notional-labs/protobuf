@@ -647,3 +647,8 @@ message NinRepNonByteCustomType {
 message ProtoType {
   optional string Field2 = 1;
 }
+
+message NoPointerStruct {
+	optional ProtoType Field1 = 1 [(gogoproto.nopointer) = true];
+	repeated ProtoType Field2 = 2 [(gogoproto.nopointer) = true];
+}

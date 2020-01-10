@@ -333,6 +333,7 @@ func (this orderFields) Swap(i, j int) {
 func (p *marshalto) generateField(proto3 bool, numGen NumGen, file *generator.FileDescriptor, message *generator.Descriptor, field *descriptor.FieldDescriptorProto) {
 	fieldname := p.GetOneOfFieldName(message, field)
 	nullable := gogoproto.IsNullable(field)
+	//nopointer := gogoproto.IsNoPointer(field)
 	repeated := field.IsRepeated()
 	required := field.IsRequired()
 
