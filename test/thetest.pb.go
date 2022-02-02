@@ -2854,10 +2854,10 @@ func (m *ProtoType) XXX_DiscardUnknown() {
 var xxx_messageInfo_ProtoType proto.InternalMessageInfo
 
 type CastRepeated struct {
-	Field1               ProtoTypesPointer `protobuf:"bytes,1,rep,name=Field1,castrepeated=ProtoTypesPointer" json:"Field1,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Field1               []*ProtoType `protobuf:"bytes,1,rep,name=Field1" json:"Field1,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
 func (m *CastRepeated) Reset()      { *m = CastRepeated{} }
@@ -2884,10 +2884,10 @@ func (m *CastRepeated) XXX_DiscardUnknown() {
 var xxx_messageInfo_CastRepeated proto.InternalMessageInfo
 
 type NidCastRepeated struct {
-	Field1               ProtoTypesNotPointer `protobuf:"bytes,1,rep,name=Field1,castrepeated=ProtoTypesNotPointer" json:"Field1"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Field1               []ProtoType `protobuf:"bytes,1,rep,name=Field1" json:"Field1"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
 func (m *NidCastRepeated) Reset()      { *m = NidCastRepeated{} }
@@ -20763,7 +20763,7 @@ func NewProtoTypeFromFace(that ProtoTypeFace) *ProtoType {
 
 type CastRepeatedFace interface {
 	Proto() github_com_gogo_protobuf_proto.Message
-	GetField1() ProtoTypesPointer
+	GetField1() []*ProtoType
 }
 
 func (this *CastRepeated) Proto() github_com_gogo_protobuf_proto.Message {
@@ -20774,7 +20774,7 @@ func (this *CastRepeated) TestProto() github_com_gogo_protobuf_proto.Message {
 	return NewCastRepeatedFromFace(this)
 }
 
-func (this *CastRepeated) GetField1() ProtoTypesPointer {
+func (this *CastRepeated) GetField1() []*ProtoType {
 	return this.Field1
 }
 
@@ -20786,7 +20786,7 @@ func NewCastRepeatedFromFace(that CastRepeatedFace) *CastRepeated {
 
 type NidCastRepeatedFace interface {
 	Proto() github_com_gogo_protobuf_proto.Message
-	GetField1() ProtoTypesNotPointer
+	GetField1() []ProtoType
 }
 
 func (this *NidCastRepeated) Proto() github_com_gogo_protobuf_proto.Message {
@@ -20797,7 +20797,7 @@ func (this *NidCastRepeated) TestProto() github_com_gogo_protobuf_proto.Message 
 	return NewNidCastRepeatedFromFace(this)
 }
 
-func (this *NidCastRepeated) GetField1() ProtoTypesNotPointer {
+func (this *NidCastRepeated) GetField1() []ProtoType {
 	return this.Field1
 }
 
@@ -26996,7 +26996,7 @@ func (m *StringCustomType) Size() (n int) {
 	var l int
 	_ = l
 	if m.Field1 != nil {
-		l = m.Field1.Size()
+		l = len(*m.Field1)
 		n += 1 + l + sovThetest(uint64(l))
 	}
 	if m.XXX_unrecognized != nil {
@@ -27011,7 +27011,7 @@ func (m *NidOptStringCustomType) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.Field1.Size()
+	l = len(m.Field1)
 	n += 1 + l + sovThetest(uint64(l))
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -27026,8 +27026,8 @@ func (m *NidRepStringCustomType) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Field1) > 0 {
-		for _, e := range m.Field1 {
-			l = e.Size()
+		for _, s := range m.Field1 {
+			l = len(s)
 			n += 1 + l + sovThetest(uint64(l))
 		}
 	}
@@ -27044,8 +27044,8 @@ func (m *NinRepStringCustomType) Size() (n int) {
 	var l int
 	_ = l
 	if len(m.Field1) > 0 {
-		for _, e := range m.Field1 {
-			l = e.Size()
+		for _, s := range m.Field1 {
+			l = len(s)
 			n += 1 + l + sovThetest(uint64(l))
 		}
 	}
