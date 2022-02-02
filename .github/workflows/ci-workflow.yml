@@ -1,11 +1,5 @@
 name: Continuous Integration
-on:
-  push:
-    branches:
-      - ghworkflow
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build_and_test:
